@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package user;
+
+message Award {
+    string awardname = 1;
+    string awarddescription = 2;
+    enum AwardLevel {
+        Bronze = 0;
+        Silver = 1;
+        Gold = 2;
+    }
+    AwardLevel awardlevel = 3;
+    uint32 awardscore = 4;
+}
+
+message User {
+    string id = 1;
+    string username = 2;
+    string email = 3;
+    string github = 4;
+    string linkedin = 5;
+    uint32 userscore = 6;
+    string bio = 7;
+    string profession = 8;
+    string workplace = 9;
+    repeated string interests = 10;
+    repeated Award userawards = 11;
+}
+
+service UserService {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message CreateUserRequest {
+    User user = 1;
+}
+
+message CreateUserResponse {
+    User user = 1;
+}
+
+message DeleteUserRequest {
+    string id = 1;
+}
+
+message DeleteUserResponse {
+    string status = 1;   
+}
+
+message UpdateUserRequest {
+    User user = 1;
+}
+
+message UpdateUserResponse {
+    User user = 1;
+}
+
+option go_package = "github.com/brandomillerio/nuboverflow_users/internal/user";
