@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package "github.com/brandonmillerio/gmio_protos/user/v1";
+package user;
 
 message Award {
     string awardname = 1;
@@ -67,4 +67,4 @@ message UpdateUserResponse {
     User user = 1;
 }
 
-option go_package = "github.com/brandomillerio/nuboverflow_users/internal/user";
+option go_package = "github.com/brandomillerio/bmio_protos/nuboverflow/user";
